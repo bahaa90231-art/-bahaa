@@ -1,0 +1,2608 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+      content="width=device-width,
+      initial-scale=1.0,
+      maximum-scale=1.0,
+      user-scalable=no">
+
+<meta name="theme-color" content="#07111f">
+
+<meta name="description"
+      content="منصة بهاء الدين التعليمية لتعلم البرمجة والتقنية">
+
+<link rel="manifest" href="manifest.webmanifest">
+
+<title>منصة بهاء الدين التعليمية</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap"
+      rel="stylesheet">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    -webkit-tap-highlight-color:transparent;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:"Cairo",sans-serif;
+    background:#07111f;
+    color:#fff;
+    min-height:100vh;
+    overflow-x:hidden;
+}
+
+button{
+    font-family:inherit;
+}
+
+body::before{
+    content:"";
+    position:fixed;
+    width:500px;
+    height:500px;
+    background:#00a8ff;
+    opacity:.09;
+    filter:blur(130px);
+    border-radius:50%;
+    top:-200px;
+    right:-150px;
+    z-index:-2;
+}
+
+body::after{
+    content:"";
+    position:fixed;
+    width:400px;
+    height:400px;
+    background:#7c3aed;
+    opacity:.09;
+    filter:blur(130px);
+    border-radius:50%;
+    bottom:-180px;
+    left:-100px;
+    z-index:-2;
+}
+
+.app{
+    min-height:100vh;
+    max-width:1400px;
+    margin:auto;
+}
+
+.header{
+    position:sticky;
+    top:0;
+    z-index:1000;
+
+    height:72px;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    padding:0 28px;
+
+    background:rgba(7,17,31,.86);
+    backdrop-filter:blur(20px);
+
+    border-bottom:1px solid rgba(255,255,255,.07);
+}
+
+.logo{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    cursor:pointer;
+}
+
+.logo-icon{
+    width:45px;
+    height:45px;
+
+    border-radius:14px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    background:linear-gradient(
+        135deg,
+        #0ea5e9,
+        #2563eb
+    );
+
+    box-shadow:
+        0 8px 25px rgba(14,165,233,.25);
+
+    font-size:22px;
+    font-weight:900;
+}
+
+.logo-text h1{
+    font-size:17px;
+    font-weight:900;
+}
+
+.logo-text span{
+    display:block;
+    color:#7dd3fc;
+    font-size:10px;
+    margin-top:-3px;
+}
+
+.nav{
+    display:flex;
+    align-items:center;
+    gap:8px;
+}
+
+.nav button{
+    border:0;
+    background:transparent;
+    color:#aab7c8;
+
+    padding:10px 16px;
+
+    border-radius:12px;
+
+    cursor:pointer;
+
+    transition:.25s;
+
+    font-size:14px;
+}
+
+.nav button:hover,
+.nav button.active{
+    background:rgba(14,165,233,.12);
+    color:#38bdf8;
+}
+
+.install-btn{
+    border:1px solid rgba(56,189,248,.3)!important;
+    background:rgba(14,165,233,.08)!important;
+    color:#38bdf8!important;
+}
+
+main{
+    padding:30px;
+}
+
+.page{
+    display:none;
+    animation:pageIn .35s ease;
+}
+
+.page.active{
+    display:block;
+}
+
+@keyframes pageIn{
+
+    from{
+        opacity:0;
+        transform:translateY(12px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+
+}
+
+.hero{
+
+    min-height:510px;
+
+    border:1px solid rgba(255,255,255,.07);
+
+    border-radius:30px;
+
+    overflow:hidden;
+
+    position:relative;
+
+    display:flex;
+
+    align-items:center;
+
+    padding:65px;
+
+    background:
+
+        radial-gradient(
+            circle at 85% 30%,
+            rgba(14,165,233,.16),
+            transparent 30%
+        ),
+
+        radial-gradient(
+            circle at 20% 90%,
+            rgba(124,58,237,.14),
+            transparent 30%
+        ),
+
+        linear-gradient(
+            135deg,
+            #0b1728,
+            #07111f
+        );
+}
+
+.hero-grid{
+
+    position:absolute;
+
+    inset:0;
+
+    opacity:.05;
+
+    background-image:
+
+        linear-gradient(
+            rgba(255,255,255,.5) 1px,
+            transparent 1px
+        ),
+
+        linear-gradient(
+            90deg,
+            rgba(255,255,255,.5) 1px,
+            transparent 1px
+        );
+
+    background-size:40px 40px;
+}
+
+.hero-content{
+    position:relative;
+    z-index:2;
+    max-width:720px;
+}
+
+.badge{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    gap:8px;
+
+    padding:8px 14px;
+
+    border-radius:30px;
+
+    background:rgba(14,165,233,.1);
+
+    border:1px solid rgba(56,189,248,.2);
+
+    color:#7dd3fc;
+
+    font-size:13px;
+
+    margin-bottom:20px;
+}
+
+.hero h2{
+
+    font-size:clamp(
+        35px,
+        5vw,
+        65px
+    );
+
+    line-height:1.15;
+
+    font-weight:900;
+
+    margin-bottom:20px;
+}
+
+.gradient-text{
+
+    background:
+        linear-gradient(
+            90deg,
+            #38bdf8,
+            #60a5fa,
+            #a78bfa
+        );
+
+    -webkit-background-clip:text;
+
+    color:transparent;
+}
+
+.hero p{
+
+    color:#aebdce;
+
+    line-height:2;
+
+    font-size:17px;
+
+    max-width:650px;
+}
+
+.hero-buttons{
+
+    display:flex;
+
+    gap:12px;
+
+    margin-top:30px;
+
+    flex-wrap:wrap;
+}
+
+.primary-btn,
+.secondary-btn{
+
+    border:0;
+
+    padding:14px 23px;
+
+    border-radius:14px;
+
+    cursor:pointer;
+
+    font-weight:800;
+
+    transition:.25s;
+}
+
+.primary-btn{
+
+    background:
+        linear-gradient(
+            135deg,
+            #0ea5e9,
+            #2563eb
+        );
+
+    color:#fff;
+
+    box-shadow:
+        0 10px 30px
+        rgba(14,165,233,.2);
+}
+
+.primary-btn:hover{
+    transform:translateY(-2px);
+}
+
+.secondary-btn{
+
+    background:
+        rgba(255,255,255,.05);
+
+    border:
+        1px solid
+        rgba(255,255,255,.1);
+
+    color:#dbeafe;
+}
+
+.hero-code{
+
+    position:absolute;
+
+    left:7%;
+
+    top:50%;
+
+    transform:translateY(-50%);
+
+    width:300px;
+
+    padding:22px;
+
+    border-radius:22px;
+
+    background:
+        rgba(4,10,19,.7);
+
+    border:
+        1px solid
+        rgba(255,255,255,.08);
+
+    box-shadow:
+        0 30px 80px
+        rgba(0,0,0,.3);
+
+    direction:ltr;
+
+    font-family:monospace;
+}
+
+.code-line{
+    margin:9px 0;
+    color:#64748b;
+}
+
+.code-blue{
+    color:#38bdf8;
+}
+
+.code-purple{
+    color:#a78bfa;
+}
+
+.code-green{
+    color:#4ade80;
+}
+
+.section{
+    margin-top:35px;
+}
+
+.section-head{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:end;
+
+    margin-bottom:20px;
+}
+
+.section-head h2{
+
+    font-size:26px;
+
+    font-weight:900;
+}
+
+.section-head p{
+
+    color:#718096;
+
+    font-size:13px;
+}
+
+.about-grid{
+
+    display:grid;
+
+    grid-template-columns:
+        1.2fr .8fr;
+
+    gap:20px;
+}
+
+.about-card{
+
+    background:
+        rgba(255,255,255,.035);
+
+    border:
+        1px solid
+        rgba(255,255,255,.07);
+
+    border-radius:22px;
+
+    padding:28px;
+}
+
+.about-card h3{
+
+    margin-bottom:14px;
+
+    font-size:20px;
+}
+
+.about-card p{
+
+    color:#aebdce;
+
+    line-height:2;
+
+    font-size:14px;
+}
+
+.profile{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:18px;
+
+    margin-bottom:18px;
+}
+
+.avatar{
+
+    width:75px;
+
+    height:75px;
+
+    border-radius:22px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    background:
+        linear-gradient(
+            135deg,
+            #0ea5e9,
+            #7c3aed
+        );
+
+    font-size:28px;
+
+    font-weight:900;
+}
+
+.profile h3{
+    margin:0;
+}
+
+.profile span{
+
+    color:#38bdf8;
+
+    font-size:12px;
+}
+
+.stats{
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(3,1fr);
+
+    gap:15px;
+
+    margin-top:25px;
+}
+
+.stat{
+
+    padding:20px;
+
+    border-radius:18px;
+
+    background:
+        rgba(255,255,255,.035);
+
+    border:
+        1px solid
+        rgba(255,255,255,.06);
+
+    text-align:center;
+}
+
+.stat strong{
+
+    display:block;
+
+    font-size:28px;
+
+    color:#38bdf8;
+}
+
+.stat span{
+
+    color:#8795a8;
+
+    font-size:12px;
+}
+
+.course-banner{
+
+    border-radius:26px;
+
+    padding:35px;
+
+    background:
+
+        radial-gradient(
+            circle at 90% 30%,
+            rgba(56,189,248,.17),
+            transparent 30%
+        ),
+
+        linear-gradient(
+            135deg,
+            #0c1d31,
+            #0a1423
+        );
+
+    border:
+        1px solid
+        rgba(255,255,255,.08);
+
+    margin-bottom:25px;
+}
+
+.course-icon{
+
+    width:70px;
+
+    height:70px;
+
+    border-radius:20px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    font-size:34px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #0ea5e9,
+            #2563eb
+        );
+
+    margin-bottom:18px;
+}
+
+.course-banner h2{
+
+    font-size:32px;
+
+    margin-bottom:10px;
+}
+
+.course-banner p{
+
+    color:#9aabbd;
+
+    line-height:1.9;
+}
+
+.course-info{
+
+    display:flex;
+
+    gap:10px;
+
+    flex-wrap:wrap;
+
+    margin-top:20px;
+}
+
+.info{
+
+    padding:8px 13px;
+
+    border-radius:10px;
+
+    background:
+        rgba(255,255,255,.05);
+
+    color:#b9c7d8;
+
+    font-size:12px;
+}
+
+.lessons-grid{
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(4,1fr);
+
+    gap:16px;
+}
+
+.lesson-card{
+
+    position:relative;
+
+    min-height:185px;
+
+    padding:21px;
+
+    border-radius:20px;
+
+    background:
+        rgba(255,255,255,.035);
+
+    border:
+        1px solid
+        rgba(255,255,255,.07);
+
+    cursor:pointer;
+
+    overflow:hidden;
+
+    transition:.3s;
+}
+
+.lesson-card::before{
+
+    content:"";
+
+    position:absolute;
+
+    width:100px;
+
+    height:100px;
+
+    border-radius:50%;
+
+    background:#0ea5e9;
+
+    opacity:.05;
+
+    left:-40px;
+
+    bottom:-40px;
+}
+
+.lesson-card:hover{
+
+    transform:translateY(-5px);
+
+    border-color:
+        rgba(56,189,248,.3);
+
+    box-shadow:
+        0 15px 40px
+        rgba(0,0,0,.18);
+}
+
+.lesson-number{
+
+    width:42px;
+
+    height:42px;
+
+    border-radius:13px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    background:
+        rgba(14,165,233,.1);
+
+    color:#38bdf8;
+
+    font-weight:900;
+
+    margin-bottom:16px;
+}
+
+.lesson-card h3{
+
+    font-size:15px;
+
+    margin-bottom:8px;
+}
+
+.lesson-card p{
+
+    color:#718096;
+
+    font-size:11px;
+
+    line-height:1.8;
+}
+
+.lesson-view{
+
+    max-width:950px;
+
+    margin:auto;
+}
+
+.back-btn{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    gap:8px;
+
+    background:
+        rgba(255,255,255,.05);
+
+    color:#aebdce;
+
+    border:
+        1px solid
+        rgba(255,255,255,.08);
+
+    padding:10px 16px;
+
+    border-radius:12px;
+
+    cursor:pointer;
+
+    margin-bottom:22px;
+}
+
+.lesson-header{
+
+    padding:35px;
+
+    border-radius:25px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #0c1d31,
+            #0a1423
+        );
+
+    border:
+        1px solid
+        rgba(255,255,255,.08);
+
+    margin-bottom:20px;
+}
+
+.lesson-header .lesson-number{
+    margin-bottom:15px;
+}
+
+.lesson-header h2{
+
+    font-size:34px;
+
+    margin-bottom:10px;
+}
+
+.lesson-header p{
+    color:#8fa1b5;
+}
+
+.lesson-content{
+
+    padding:35px;
+
+    border-radius:25px;
+
+    background:
+        rgba(255,255,255,.035);
+
+    border:
+        1px solid
+        rgba(255,255,255,.07);
+}
+
+.lesson-content h3{
+
+    font-size:21px;
+
+    margin:25px 0 12px;
+
+    color:#7dd3fc;
+}
+
+.lesson-content h3:first-child{
+    margin-top:0;
+}
+
+.lesson-content p{
+
+    color:#b4c1d0;
+
+    line-height:2.1;
+}
+
+.lesson-content ul{
+
+    padding-right:20px;
+
+    color:#aebdce;
+
+    line-height:2;
+}
+
+.example{
+
+    direction:ltr;
+
+    text-align:left;
+
+    background:#020617;
+
+    border:
+        1px solid
+        rgba(255,255,255,.08);
+
+    border-radius:15px;
+
+    padding:20px;
+
+    margin-top:15px;
+
+    overflow:auto;
+
+    color:#dbeafe;
+
+    font-family:monospace;
+
+    line-height:1.8;
+}
+
+.lesson-navigation{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    gap:15px;
+
+    margin-top:20px;
+}
+
+.lesson-navigation button{
+    flex:1;
+}
+
+footer{
+
+    text-align:center;
+
+    padding:
+        45px 20px 30px;
+
+    color:#526174;
+
+    font-size:12px;
+}
+
+footer strong{
+    color:#38bdf8;
+}
+
+.toast{
+
+    position:fixed;
+
+    bottom:25px;
+
+    left:50%;
+
+    transform:
+        translate(-50%,20px);
+
+    background:#101d2d;
+
+    border:
+        1px solid
+        rgba(255,255,255,.1);
+
+    color:#fff;
+
+    padding:12px 20px;
+
+    border-radius:14px;
+
+    opacity:0;
+
+    pointer-events:none;
+
+    transition:.3s;
+
+    z-index:5000;
+
+    font-size:13px;
+
+    text-align:center;
+
+    width:max-content;
+
+    max-width:90%;
+}
+
+.toast.show{
+
+    opacity:1;
+
+    transform:
+        translate(-50%,0);
+}
+
+@media(max-width:1100px){
+
+    .lessons-grid{
+        grid-template-columns:
+            repeat(3,1fr);
+    }
+
+    .hero-code{
+        display:none;
+    }
+
+    .hero-content{
+        max-width:850px;
+    }
+
+}
+
+@media(max-width:800px){
+
+    .header{
+
+        height:64px;
+
+        padding:0 15px;
+    }
+
+    .logo-text h1{
+        font-size:14px;
+    }
+
+    .nav button{
+
+        padding:
+            8px 9px;
+
+        font-size:11px;
+    }
+
+    .nav button:not(.install-btn){
+        display:none;
+    }
+
+    main{
+
+        padding:15px;
+
+        padding-bottom:30px;
+    }
+
+    .hero{
+
+        min-height:530px;
+
+        padding:
+            35px 22px;
+
+        border-radius:24px;
+    }
+
+    .hero h2{
+        font-size:37px;
+    }
+
+    .hero p{
+        font-size:14px;
+    }
+
+    .hero-buttons{
+        flex-direction:column;
+    }
+
+    .hero-buttons button{
+        width:100%;
+    }
+
+    .about-grid{
+        grid-template-columns:1fr;
+    }
+
+    .stats{
+        grid-template-columns:1fr;
+    }
+
+    .lessons-grid{
+
+        grid-template-columns:
+            repeat(2,1fr);
+
+        gap:10px;
+    }
+
+    .lesson-card{
+
+        min-height:165px;
+
+        padding:17px;
+    }
+
+    .course-banner{
+        padding:25px;
+    }
+
+    .course-banner h2{
+        font-size:25px;
+    }
+
+    .lesson-header,
+    .lesson-content{
+        padding:23px;
+    }
+
+    .lesson-header h2{
+        font-size:26px;
+    }
+
+}
+
+@media(max-width:430px){
+
+    .lessons-grid{
+        grid-template-columns:1fr;
+    }
+
+    .lesson-card{
+        min-height:auto;
+    }
+
+    .lesson-card p{
+        font-size:12px;
+    }
+
+    .logo-icon{
+
+        width:38px;
+
+        height:38px;
+    }
+
+    .install-btn{
+        font-size:10px!important;
+    }
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="app">
+
+<header class="header">
+
+    <div class="logo"
+         onclick="showPage('home')">
+
+        <div class="logo-icon">
+            ب
+        </div>
+
+        <div class="logo-text">
+
+            <h1>
+                منصة بهاء الدين
+            </h1>
+
+            <span>
+                التعليمية
+            </span>
+
+        </div>
+
+    </div>
+
+    <nav class="nav">
+
+        <button
+            id="navHome"
+            class="active"
+            onclick="showPage('home')">
+
+            الرئيسية
+
+        </button>
+
+        <button
+            id="navCourse"
+            onclick="showPage('course')">
+
+            الكورسات
+
+        </button>
+
+        <button
+            class="install-btn"
+            onclick="installApp()">
+
+            📲 تثبيت التطبيق
+
+        </button>
+
+    </nav>
+
+</header>
+
+
+<main>
+
+
+<!-- ================= HOME ================= -->
+
+<section
+    id="home"
+    class="page active">
+
+    <div class="hero">
+
+        <div class="hero-grid"></div>
+
+        <div class="hero-content">
+
+            <div class="badge">
+                ✦ منصة تعليمية عربية للمستقبل
+            </div>
+
+            <h2>
+
+                تعلّم البرمجة
+
+                <br>
+
+                <span class="gradient-text">
+                    وابنِ مستقبلك
+                </span>
+
+            </h2>
+
+            <p>
+
+                مرحبًا بك في منصة بهاء الدين التعليمية،
+                منصة عربية تهدف إلى تقديم محتوى تعليمي
+                مبسط واحترافي في البرمجة وتطوير الويب
+                والذكاء الاصطناعي والتقنيات الحديثة.
+
+            </p>
+
+            <div class="hero-buttons">
+
+                <button
+                    class="primary-btn"
+                    onclick="showPage('course')">
+
+                    🚀 ابدأ التعلم
+
+                </button>
+
+                <button
+                    class="secondary-btn"
+                    onclick="document
+                    .getElementById('about')
+                    .scrollIntoView()">
+
+                    تعرف على المنصة
+
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <div class="hero-code">
+
+            <div class="code-line">
+                <span class="code-purple">
+                    const
+                </span>
+
+                academy =
+
+                <span class="code-green">
+                    "Baha Academy"
+                </span>;
+            </div>
+
+            <div class="code-line">
+                <span class="code-blue">
+                    learn
+                </span>();
+            </div>
+
+            <div class="code-line">
+
+                <span class="code-purple">
+                    while
+                </span>(true){
+
+            </div>
+
+            <div class="code-line">
+                &nbsp;&nbsp;develop();
+            </div>
+
+            <div class="code-line">
+                &nbsp;&nbsp;create();
+            </div>
+
+            <div class="code-line">
+                &nbsp;&nbsp;innovate();
+            </div>
+
+            <div class="code-line">
+                }
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div
+        id="about"
+        class="section">
+
+        <div class="section-head">
+
+            <div>
+
+                <h2>
+                    عن المنصة
+                </h2>
+
+                <p>
+                    التعلم بطريقة أبسط وأقرب للطالب
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="about-grid">
+
+            <div class="about-card">
+
+                <h3>
+                    🎯 هدف المنصة
+                </h3>
+
+                <p>
+
+                    تهدف منصة بهاء الدين التعليمية
+                    إلى مساعدة الطلاب والمبتدئين
+                    على دخول عالم البرمجة بطريقة
+                    منظمة وسهلة، من خلال تقديم
+                    الدروس والمشاريع والتطبيقات
+                    العملية التي تساعد المتعلم
+                    على تحويل المعرفة إلى مهارات حقيقية.
+
+                </p>
+
+                <br>
+
+                <p>
+
+                    رؤيتنا هي بناء مجتمع عربي تقني
+                    قادر على التعلم والإبداع وصناعة
+                    الحلول الرقمية بدلًا من الاكتفاء
+                    باستهلاك التكنولوجيا.
+
+                </p>
+
+            </div>
+
+
+            <div class="about-card">
+
+                <div class="profile">
+
+                    <div class="avatar">
+                        ب
+                    </div>
+
+                    <div>
+
+                        <h3>
+                            بهاء الدين الحسين
+                        </h3>
+
+                        <span>
+                            مبرمج ومطور مواقع وباحث في الذكاء الاصطناعي
+                        </span>
+
+                    </div>
+
+                </div>
+
+                <p>
+
+                    مطور ومبرمج مهتم ببناء المواقع
+                    والتطبيقات التعليمية والتقنيات
+                    الحديثة، وأسعى من خلال هذه المنصة
+                    إلى مشاركة المعرفة وتقديم تجربة
+                    تعليمية عربية حديثة تساعد الشباب
+                    على تعلم البرمجة وبناء مشاريعهم الخاصة.
+
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="stats">
+
+            <div class="stat">
+
+                <strong>
+                    20+
+                </strong>
+
+                <span>
+                    درس تعليمي
+                </span>
+
+            </div>
+
+            <div class="stat">
+
+                <strong>
+                    1
+                </strong>
+
+                <span>
+                    كورس متكامل
+                </span>
+
+            </div>
+
+            <div class="stat">
+
+                <strong>
+                    ∞
+                </strong>
+
+                <span>
+                    فرص للتعلم
+                </span>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= COURSE ================= -->
+
+<section
+    id="course"
+    class="page">
+
+    <div class="course-banner">
+
+        <div class="course-icon">
+            &lt;/&gt;
+        </div>
+
+        <h2>
+            أساسيات البرمجة
+        </h2>
+
+        <p>
+
+            كورس تأسيسي للمبتدئين يأخذك خطوة
+            بخطوة لفهم البرمجة وطريقة التفكير
+            البرمجية، وصولًا إلى كتابة برامجك الأولى.
+
+        </p>
+
+        <div class="course-info">
+
+            <span class="info">
+                📚 20 درس
+            </span>
+
+            <span class="info">
+                🎯 مستوى مبتدئ
+            </span>
+
+            <span class="info">
+                💻 برمجة
+            </span>
+
+            <span class="info">
+                🌐 عربي
+            </span>
+
+        </div>
+
+    </div>
+
+
+    <div class="section-head">
+
+        <div>
+
+            <h2>
+                دروس الكورس
+            </h2>
+
+            <p>
+                اضغط على أي درس لفتح محتواه
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div
+        id="lessonsGrid"
+        class="lessons-grid">
+
+    </div>
+
+</section>
+
+
+<!-- ================= LESSON ================= -->
+
+<section
+    id="lesson"
+    class="page">
+
+    <div class="lesson-view">
+
+        <button
+            class="back-btn"
+            onclick="showPage('course')">
+
+            → العودة إلى الدروس
+
+        </button>
+
+        <div
+            id="lessonContainer">
+
+        </div>
+
+    </div>
+
+</section>
+
+</main>
+
+
+<footer>
+
+    جميع الحقوق محفوظة ©
+
+    <strong>
+        منصة بهاء الدين التعليمية
+    </strong>
+
+    <br>
+
+    تطوير وتصميم:
+    بهاء الدين الحسين
+
+</footer>
+
+</div>
+
+
+<div
+    id="toast"
+    class="toast">
+
+    تم تنفيذ العملية
+
+</div>
+
+
+<script>
+
+/* =========================================
+   LESSONS
+========================================= */
+
+const lessons = [
+
+{
+title:"ما هي البرمجة؟",
+desc:"تعرف على مفهوم البرمجة ولماذا نحتاج إليها.",
+content:`
+
+<h3>مقدمة</h3>
+
+<p>
+البرمجة هي عملية كتابة مجموعة من التعليمات
+التي يستطيع الحاسوب تنفيذها من أجل حل مشكلة
+أو تنفيذ مهمة معينة.
+</p>
+
+<h3>لماذا نتعلم البرمجة؟</h3>
+
+<p>
+لأن البرمجة أصبحت جزءًا أساسيًا من التكنولوجيا
+الحديثة، وتستخدم في المواقع والتطبيقات والألعاب
+والذكاء الاصطناعي والروبوتات وغيرها.
+</p>
+
+<h3>فكرة بسيطة</h3>
+
+<p>
+عندما نعطي الحاسوب تعليمات مرتبة ومنطقية،
+فإنه يقوم بتنفيذها بالترتيب الذي حددناه.
+</p>
+
+`
+},
+
+{
+title:"كيف يعمل الحاسوب؟",
+desc:"فهم المكونات الأساسية وطريقة تنفيذ الأوامر.",
+content:`
+
+<h3>الحاسوب</h3>
+
+<p>
+الحاسوب جهاز إلكتروني يستطيع استقبال البيانات
+ومعالجتها وتخزينها وإخراج النتائج.
+</p>
+
+<h3>المعالج CPU</h3>
+
+<p>
+المعالج هو المسؤول عن تنفيذ التعليمات
+والعمليات الحسابية والمنطقية.
+</p>
+
+<h3>الذاكرة</h3>
+
+<p>
+تستخدم الذاكرة لتخزين البيانات التي يحتاج
+إليها البرنامج أثناء التشغيل.
+</p>
+
+`
+},
+
+{
+title:"الخوارزميات",
+desc:"تعلم طريقة التفكير لحل المشكلات.",
+content:`
+
+<h3>ما هي الخوارزمية؟</h3>
+
+<p>
+الخوارزمية هي مجموعة خطوات مرتبة ومنطقية
+لحل مشكلة معينة.
+</p>
+
+<h3>مثال</h3>
+
+<p>
+لتحضير كوب شاي يمكن أن تكون الخوارزمية:
+إحضار الماء، تسخين الماء، إضافة الشاي،
+ثم إضافة السكر حسب الرغبة.
+</p>
+
+`
+},
+
+{
+title:"لغات البرمجة",
+desc:"تعرف على أشهر لغات البرمجة واستخداماتها.",
+content:`
+
+<h3>ما هي لغة البرمجة؟</h3>
+
+<p>
+هي لغة نستخدمها لكتابة تعليمات يفهمها
+المترجم أو المفسر ويحولها إلى أوامر
+يمكن للحاسوب تنفيذها.
+</p>
+
+<h3>أمثلة</h3>
+
+<ul>
+<li>JavaScript</li>
+<li>Python</li>
+<li>Java</li>
+<li>C++</li>
+<li>C#</li>
+</ul>
+
+`
+},
+
+{
+title:"المتغيرات",
+desc:"تعلم تخزين البيانات واستخدام المتغيرات.",
+content:`
+
+<h3>المتغير</h3>
+
+<p>
+المتغير هو مساحة في الذاكرة نستخدمها
+لتخزين قيمة يمكن استخدامها أو تغييرها.
+</p>
+
+<div class="example">
+
+let name = "Bahaa";
+<br>
+let age = 20;
+<br>
+let score = 95;
+
+</div>
+
+`
+},
+
+{
+title:"أنواع البيانات",
+desc:"تعرف على النصوص والأرقام والقيم المنطقية.",
+content:`
+
+<h3>أهم أنواع البيانات</h3>
+
+<ul>
+
+<li>
+String - النصوص
+</li>
+
+<li>
+Number - الأرقام
+</li>
+
+<li>
+Boolean - true / false
+</li>
+
+<li>
+Array - المصفوفات
+</li>
+
+<li>
+Object - الكائنات
+</li>
+
+</ul>
+
+<div class="example">
+
+let name = "Bahaa";
+<br>
+let age = 20;
+<br>
+let active = true;
+
+</div>
+
+`
+},
+
+{
+title:"العمليات الحسابية",
+desc:"تعلم العمليات الحسابية داخل البرامج.",
+content:`
+
+<h3>العمليات الأساسية</h3>
+
+<p>
+يمكن للبرامج تنفيذ عمليات الجمع والطرح
+والضرب والقسمة وباقي العمليات الرياضية.
+</p>
+
+<div class="example">
+
+let a = 10;
+<br>
+let b = 5;
+<br><br>
+
+console.log(a + b);
+<br>
+console.log(a - b);
+<br>
+console.log(a * b);
+<br>
+console.log(a / b);
+
+</div>
+
+`
+},
+
+{
+title:"الشروط",
+desc:"اجعل البرنامج يتخذ قرارات مختلفة.",
+content:`
+
+<h3>الجمل الشرطية</h3>
+
+<p>
+تسمح الشروط للبرنامج باتخاذ قرار بناءً
+على حالة أو قيمة معينة.
+</p>
+
+<div class="example">
+
+let age = 20;
+<br><br>
+
+if(age >= 18){
+<br>
+&nbsp;&nbsp;console.log("مسموح");
+<br>
+}else{
+<br>
+&nbsp;&nbsp;console.log("غير مسموح");
+<br>
+}
+
+</div>
+
+`
+},
+
+{
+title:"الحلقات التكرارية",
+desc:"تعلم تنفيذ أمر عدة مرات بسهولة.",
+content:`
+
+<h3>Loops</h3>
+
+<p>
+الحلقات تستخدم عندما نحتاج إلى تكرار
+مجموعة من الأوامر عدة مرات.
+</p>
+
+<div class="example">
+
+for(let i = 1; i <= 5; i++){
+<br>
+&nbsp;&nbsp;console.log(i);
+<br>
+}
+
+</div>
+
+`
+},
+
+{
+title:"الدوال",
+desc:"قسم البرنامج إلى أجزاء قابلة لإعادة الاستخدام.",
+content:`
+
+<h3>Functions</h3>
+
+<p>
+الدالة عبارة عن مجموعة أوامر يمكن استدعاؤها
+كلما احتجنا إلى تنفيذها.
+</p>
+
+<div class="example">
+
+function sayHello(){
+<br>
+&nbsp;&nbsp;console.log("مرحبا");
+<br>
+}
+<br><br>
+sayHello();
+
+</div>
+
+`
+},
+
+{
+title:"المصفوفات",
+desc:"تعلم تخزين مجموعة من القيم.",
+content:`
+
+<h3>Arrays</h3>
+
+<p>
+المصفوفة تسمح بتخزين مجموعة من العناصر
+داخل متغير واحد.
+</p>
+
+<div class="example">
+
+let languages = [
+<br>
+&nbsp;&nbsp;"HTML",
+<br>
+&nbsp;&nbsp;"CSS",
+<br>
+&nbsp;&nbsp;"JavaScript"
+<br>
+];
+
+</div>
+
+`
+},
+
+{
+title:"الكائنات",
+desc:"تعلم تنظيم البيانات باستخدام Objects.",
+content:`
+
+<h3>Objects</h3>
+
+<p>
+الكائن يستخدم لتجميع مجموعة من الخصائص
+المرتبطة بشيء معين.
+</p>
+
+<div class="example">
+
+let student = {
+<br>
+&nbsp;&nbsp;name: "Bahaa",
+<br>
+&nbsp;&nbsp;age: 20,
+<br>
+&nbsp;&nbsp;level: "Beginner"
+<br>
+};
+
+</div>
+
+`
+},
+
+{
+title:"مقدمة إلى HTML",
+desc:"تعرف على لغة بناء صفحات الويب.",
+content:`
+
+<h3>HTML</h3>
+
+<p>
+HTML هي اللغة الأساسية المستخدمة لبناء
+هيكل صفحات الويب.
+</p>
+
+<div class="example">
+
+&lt;h1&gt;مرحبا بالعالم&lt;/h1&gt;
+<br>
+&lt;p&gt;هذه أول صفحة لي&lt;/p&gt;
+
+</div>
+
+`
+},
+
+{
+title:"مقدمة إلى CSS",
+desc:"تعلم تنسيق صفحات الويب.",
+content:`
+
+<h3>CSS</h3>
+
+<p>
+CSS تستخدم لتنسيق وتصميم صفحات HTML
+وتغيير الألوان والخطوط والأحجام
+والتخطيط.
+</p>
+
+<div class="example">
+
+h1{
+<br>
+&nbsp;&nbsp;color:blue;
+<br>
+&nbsp;&nbsp;font-size:40px;
+<br>
+}
+
+</div>
+
+`
+},
+
+{
+title:"مقدمة إلى JavaScript",
+desc:"أضف التفاعل والحركة إلى صفحات الويب.",
+content:`
+
+<h3>JavaScript</h3>
+
+<p>
+JavaScript لغة برمجة تستخدم لإضافة
+التفاعل والوظائف الديناميكية إلى المواقع.
+</p>
+
+<div class="example">
+
+alert("مرحبا بك");
+
+</div>
+
+`
+},
+
+{
+title:"DOM",
+desc:"تعلم التحكم بعناصر صفحة الويب.",
+content:`
+
+<h3>DOM</h3>
+
+<p>
+DOM هو النموذج الذي يسمح لـ JavaScript
+بالتعامل مع عناصر HTML وتغييرها.
+</p>
+
+<div class="example">
+
+document.querySelector("h1");
+
+</div>
+
+`
+},
+
+{
+title:"الأحداث Events",
+desc:"تعلم الاستجابة للنقر والكتابة وغيرها.",
+content:`
+
+<h3>Events</h3>
+
+<p>
+الأحداث هي الأشياء التي تحدث داخل الصفحة،
+مثل الضغط على زر أو الكتابة في حقل.
+</p>
+
+<div class="example">
+
+button.addEventListener("click", () => {
+<br>
+&nbsp;&nbsp;console.log("تم الضغط");
+<br>
+});
+
+</div>
+
+`
+},
+
+{
+title:"تصحيح الأخطاء",
+desc:"تعلم اكتشاف الأخطاء البرمجية وإصلاحها.",
+content:`
+
+<h3>Debugging</h3>
+
+<p>
+تصحيح الأخطاء مهارة أساسية لكل مبرمج.
+عندما لا يعمل البرنامج كما هو متوقع،
+نبحث عن سبب المشكلة ونقوم بإصلاحها.
+</p>
+
+<h3>نصيحة</h3>
+
+<p>
+اقرأ رسالة الخطأ جيدًا، وحدد السطر الذي
+حدثت فيه المشكلة، ثم اختبر الحل خطوة بخطوة.
+</p>
+
+`
+},
+
+{
+title:"المشاريع البرمجية",
+desc:"تعلم كيف تحول المعرفة إلى مشروع حقيقي.",
+content:`
+
+<h3>لماذا المشاريع؟</h3>
+
+<p>
+المشروع هو أفضل طريقة لتحويل المعلومات
+التي تعلمتها إلى مهارات عملية.
+</p>
+
+<h3>أمثلة</h3>
+
+<ul>
+
+<li>
+آلة حاسبة
+</li>
+
+<li>
+قائمة مهام
+</li>
+
+<li>
+موقع شخصي
+</li>
+
+<li>
+نظام تسجيل دخول
+</li>
+
+<li>
+تطبيق تعليمي
+</li>
+
+</ul>
+
+`
+},
+
+{
+title:"كيف تصبح مبرمجًا؟",
+desc:"خارطة طريق عملية للاستمرار في تعلم البرمجة.",
+content:`
+
+<h3>ابدأ بخطوات صغيرة</h3>
+
+<p>
+لا تحاول تعلم كل شيء في وقت واحد.
+اختر مجالًا واحدًا وابدأ من الأساسيات.
+</p>
+
+<h3>الطريق المقترح</h3>
+
+<ul>
+
+<li>
+تعلم أساسيات البرمجة
+</li>
+
+<li>
+تعلم HTML و CSS
+</li>
+
+<li>
+تعلم JavaScript
+</li>
+
+<li>
+أنشئ مشاريع
+</li>
+
+<li>
+اقرأ أكواد الآخرين
+</li>
+
+<li>
+طور مشاريعك باستمرار
+</li>
+
+</ul>
+
+<h3>الخلاصة</h3>
+
+<p>
+المبرمج الناجح ليس الشخص الذي يحفظ أكبر
+عدد من الأوامر، بل الشخص الذي يستطيع
+تحليل المشكلة وتحويلها إلى خطوات وحلها.
+</p>
+
+`
+
+}
+
+];
+
+
+/* =========================================
+   BUILD CARDS
+========================================= */
+
+const lessonsGrid =
+document.getElementById(
+    "lessonsGrid"
+);
+
+lessons.forEach(
+    (lesson,index)=>{
+
+        const card =
+        document.createElement("div");
+
+        card.className =
+        "lesson-card";
+
+        card.onclick =
+        ()=>openLesson(index);
+
+        card.innerHTML = `
+
+            <div class="lesson-number">
+
+                ${String(index+1)
+                .padStart(2,"0")}
+
+            </div>
+
+            <h3>
+                ${lesson.title}
+            </h3>
+
+            <p>
+                ${lesson.desc}
+            </p>
+
+        `;
+
+        lessonsGrid.appendChild(card);
+
+    }
+);
+
+
+/* =========================================
+   PAGE SYSTEM
+========================================= */
+
+function showPage(page){
+
+    document
+    .querySelectorAll(".page")
+    .forEach(
+        p=>p.classList.remove("active")
+    );
+
+    const selected =
+    document.getElementById(page);
+
+    if(selected){
+        selected.classList.add("active");
+    }
+
+    document
+    .querySelectorAll(".nav button")
+    .forEach(
+        btn=>btn.classList.remove("active")
+    );
+
+    if(page==="home"){
+
+        document
+        .getElementById("navHome")
+        .classList.add("active");
+
+    }
+
+    if(page==="course"){
+
+        document
+        .getElementById("navCourse")
+        .classList.add("active");
+
+    }
+
+    window.scrollTo({
+        top:0,
+        behavior:"smooth"
+    });
+
+}
+
+
+/* =========================================
+   LESSON SYSTEM
+========================================= */
+
+let currentLesson = 0;
+
+function openLesson(index){
+
+    currentLesson =
+    index;
+
+    renderLesson();
+
+    showPage("lesson");
+
+}
+
+
+function renderLesson(){
+
+    const lesson =
+    lessons[currentLesson];
+
+    const container =
+    document.getElementById(
+        "lessonContainer"
+    );
+
+    const previous =
+    currentLesson > 0
+
+    ?
+
+    `
+    <button
+        class="secondary-btn"
+        onclick="openLesson(${currentLesson-1})">
+
+        → الدرس السابق
+
+    </button>
+    `
+
+    :
+
+    `<div></div>`;
+
+
+    const next =
+    currentLesson <
+    lessons.length - 1
+
+    ?
+
+    `
+    <button
+        class="primary-btn"
+        onclick="openLesson(${currentLesson+1})">
+
+        الدرس التالي ←
+
+    </button>
+    `
+
+    :
+
+    `
+    <button
+        class="primary-btn"
+        onclick="showPage('course')">
+
+        ✓ إنهاء الكورس
+
+    </button>
+    `;
+
+
+    container.innerHTML = `
+
+        <div class="lesson-header">
+
+            <div class="lesson-number">
+
+                ${String(
+                    currentLesson+1
+                ).padStart(2,"0")}
+
+            </div>
+
+            <h2>
+                ${lesson.title}
+            </h2>
+
+            <p>
+                ${lesson.desc}
+            </p>
+
+        </div>
+
+
+        <div class="lesson-content">
+
+            ${lesson.content}
+
+        </div>
+
+
+        <div class="lesson-navigation">
+
+            ${previous}
+
+            ${next}
+
+        </div>
+
+    `;
+
+}
+
+
+/* =========================================
+   PWA INSTALL
+========================================= */
+
+let deferredPrompt = null;
+
+window.addEventListener(
+    "beforeinstallprompt",
+    event=>{
+
+        event.preventDefault();
+
+        deferredPrompt = event;
+
+    }
+);
+
+
+async function installApp(){
+
+    if(deferredPrompt){
+
+        deferredPrompt.prompt();
+
+        const result =
+        await deferredPrompt.userChoice;
+
+        if(
+            result.outcome ===
+            "accepted"
+        ){
+
+            showToast(
+                "تم تثبيت منصة بهاء الدين التعليمية 📲"
+            );
+
+        }
+
+        deferredPrompt = null;
+
+        return;
+
+    }
+
+
+    showToast(
+        "افتح قائمة المتصفح واختر تثبيت التطبيق"
+    );
+
+}
+
+
+/* =========================================
+   APP INSTALLED
+========================================= */
+
+window.addEventListener(
+    "appinstalled",
+    ()=>{
+
+        showToast(
+            "تم تثبيت التطبيق بنجاح 🎉"
+        );
+
+    }
+);
+
+
+/* =========================================
+   TOAST
+========================================= */
+
+function showToast(message){
+
+    const toast =
+    document.getElementById(
+        "toast"
+    );
+
+    toast.textContent =
+    message;
+
+    toast.classList.add(
+        "show"
+    );
+
+    setTimeout(
+        ()=>{
+
+            toast.classList.remove(
+                "show"
+            );
+
+        },
+        3500
+    );
+
+}
+
+
+/* =========================================
+   SERVICE WORKER
+========================================= */
+
+if(
+    "serviceWorker" in navigator
+){
+
+    window.addEventListener(
+        "load",
+        ()=>{
+
+            navigator
+            .serviceWorker
+            .register("./sw.js")
+            .then(
+                registration=>{
+
+                    console.log(
+                        "Service Worker يعمل:",
+                        registration.scope
+                    );
+
+                }
+            )
+            .catch(
+                error=>{
+
+                    console.error(
+                        "Service Worker Error:",
+                        error
+                    );
+
+                }
+            );
+
+        }
+    );
+
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+let lastTouchEnd = 0;
+
+document.addEventListener(
+    "touchend",
+    function(event){
+
+        const now =
+        Date.now();
+
+        if(
+            now-lastTouchEnd <= 300
+        ){
+
+            event.preventDefault();
+
+        }
+
+        lastTouchEnd =
+        now;
+
+    },
+    false
+);
+
+
+/* =========================================
+   START
+========================================= */
+
+showPage("home");
+
+</script>
+
+</body>
+</html>
