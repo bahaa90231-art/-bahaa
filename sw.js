@@ -1,15 +1,15 @@
-const CACHE_NAME = "baha-academy-v1";
+const CACHE_NAME = "zad-muslim-v1";
 
-const APP_FILES = [
+const FILES_TO_CACHE = [
     "./",
     "./index.html",
-    "./manifest.webmanifest"
+    "./style.css",
+    "./app.js",
+    "./manifest.json",
+    "./icons/icon-192.png",
+    "./icons/icon-512.png"
 ];
 
-
-/* ==============================
-   INSTALL
-============================== */
 
 self.addEventListener(
     "install",
@@ -18,13 +18,13 @@ self.addEventListener(
         event.waitUntil(
 
             caches.open(CACHE_NAME)
-            .then(cache => {
+                .then(cache => {
 
-                return cache.addAll(
-                    APP_FILES
-                );
+                    return cache.addAll(
+                        FILES_TO_CACHE
+                    );
 
-            })
+                })
 
         );
 
@@ -34,10 +34,6 @@ self.addEventListener(
 );
 
 
-/* ==============================
-   ACTIVATE
-============================== */
-
 self.addEventListener(
     "activate",
     event => {
@@ -45,23 +41,23 @@ self.addEventListener(
         event.waitUntil(
 
             caches.keys()
-            .then(keys => {
+                .then(keys => {
 
-                return Promise.all(
+                    return Promise.all(
 
-                    keys
-                    .filter(
-                        key =>
-                            key !== CACHE_NAME
-                    )
-                    .map(
-                        key =>
-                            caches.delete(key)
-                    )
+                        keys
+                            .filter(
+                                key =>
+                                    key !== CACHE_NAME
+                            )
+                            .map(
+                                key =>
+                                    caches.delete(key)
+                            )
 
-                );
+                    );
 
-            })
+                })
 
         );
 
@@ -71,77 +67,36 @@ self.addEventListener(
 );
 
 
-/* ==============================
-   FETCH
-============================== */
-
 self.addEventListener(
     "fetch",
     event => {
 
-        if(
-            event.request.method !== "GET"
-        ){
-
-            return;
-
-        }
-
         event.respondWith(
 
-            caches.match(
-                event.request
-            )
-            .then(cachedResponse => {
+            caches.match(event.request)
+                .then(cachedResponse => {
 
-                if(cachedResponse){
+                    if (cachedResponse) {
 
-                    return cachedResponse;
-
-                }
-
-                return fetch(
-                    event.request
-                )
-                .then(response => {
-
-                    if(
-                        !response ||
-                        response.status !== 200 ||
-                        response.type === "opaque"
-                    ){
-
-                        return response;
+                        return cachedResponse;
 
                     }
 
-                    const responseClone =
-                    response.clone();
+                    return fetch(event.request)
+                        .then(response => {
 
-                    caches.open(
-                        CACHE_NAME
-                    )
-                    .then(cache => {
+                            return response;
 
-                        cache.put(
-                            event.request,
-                            responseClone
-                        );
+                        })
+                        .catch(() => {
 
-                    });
+                            return caches.match(
+                                "./index.html"
+                            );
 
-                    return response;
+                        });
 
                 })
-                .catch(() => {
-
-                    return caches.match(
-                        "./index.html"
-                    );
-
-                });
-
-            })
 
         );
 
